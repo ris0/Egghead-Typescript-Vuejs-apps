@@ -1,47 +1,55 @@
 <template>
   <div class="hello">
-    <h1 v-colorDirective.background="{ color: 'white', background: 'blue', isRichSexy: true }"> {{ message }} </h1>
+  <div> {{ fullMessage }}</div>
+    <!-- <h1 v-colorDirective.background="{ color: 'white', background: 'blue', isRichSexy: true }"> {{ message }} </h1> -->
   </div>
 </template>
 
 <script lang="ts">
-import Parent from './Parent'
-import Component from 'vue-class-component'
-import colorDirective from '../color-directive'
+import Parent from "./Parent";
+import Vue from "vue"
+// import colorDirective from "../color-directive";
+import { Component, Prop } from 'vue-property-decorator';
 
-@Component({
-    directives: {
-        colorDirective
-    }
-})
+// @Component({
+  // props: {
+  //   msg: String
+  // },
+  // directives: {
+  //   colorDirective
+  // }
+// })
 
-export default class Hello extends Parent {
-  message: string = 'Hello Vue'
+@Component({})
+export default class Hello extends Vue {
+  message: string = "Hello";
+
+  @Prop({type: String, default: ' Vue'}) msg: string
 
   get fullMessage() {
-    return `${this.message} from TypeScript`
+    return `${this.message}${this.msg}`;
   }
 
-  created() {
-    console.log('Created');
-  }
+  // created() {
+  //   console.log("Created");
+  // }
 
-  clicked() {
-    console.log('Clicked')
-  }
-  
-  // in order to use these hooks, we'll need to pass these args
-  beforeRouteEnter(to, from, next) {
-    console.log('Enter')
-    next()
-  }
+  // clicked() {
+  //   console.log("Clicked");
+  // }
+
+  // // in order to use these hooks, we'll need to pass these args
+  // beforeRouteEnter(to, from, next) {
+  //   console.log("Enter");
+  //   next();
+  // }
 }
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 
