@@ -1,18 +1,31 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <Hello msg=" world"/>
-    <router-view></router-view>
+    <MyCheckbox :title="checkbox.title" :value="checkbox.value" v-model="checkbox.checked"/>
+    <!-- <router-view></router-view> -->
   </div>
 </template>
 
-<script lang="ts">
-import Hello from './components/Hello.vue'
 
-export default {
-  name: 'app',
+<script lang="ts">
+// Vue models, v-model, allow us to use two-way data binding, which is useful in some cases such as forms. This lesson shows how to use it by creating a custom checkbox component using the @Model decorator in TypeScript
+// v-model implictly sets a value property and listens to an event?
+
+import Vue from 'vue'
+import { Component } from 'vue-property-decorator'
+import MyCheckbox from './components/MyCheckbox.vue'
+
+@Component({
   components: {
-    Hello
+    MyCheckbox
+  }
+})
+
+export default class App extends Vue {
+  checkbox = {
+    title: 'Fancy checkbox',
+    value: 'checkbox-id',
+    checked: true
   }
 }
 </script>
