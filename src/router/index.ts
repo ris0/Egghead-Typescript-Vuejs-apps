@@ -11,11 +11,12 @@ export default new Router({
       path: '/',
       name: 'Hello',
       component: Hello
-    },
-    {
-      path: '/hello-ts',
-      name: 'HelloTS',
-      component: HelloTS
     }
+    // ,
+    // {
+    //   path: '/hello-ts',
+    //   name: 'HelloTS',
+    //   component: HelloTS
+    // }
   ]
 })
